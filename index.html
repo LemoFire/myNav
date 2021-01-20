@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome To iTo</title>
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="paper-window">
+	<div id="paper-front">
+		<div class="hamburger"><span id="hamburger"></span></div><div id="container">
+
+			<section>
+				<div class="progress">
+				  <div class="progress-bar" role="progressbar"></div>
+				</div>
+				<div class="jumbotron" style="display: none;position: relative">
+				  <h1 class="display-4" style=" ">Welcome To iTo</h1>
+				  <p class="lead">A website lead your Network life</p>
+				  <hr class="my-4">
+				  <p>Coming soon</p>
+				  <a class="btn btn-primary btn-lg" href="//hi.ito.fun/nav.html" role="button">Go Nav</a>
+				</div>
+
+			</section>
+			<footer>
+				<div id="footer">
+						
+				</div>
+			</footer>
+
+		</div>
+	</div>
+</div>
+<div id="paper-back">
+	<nav>
+		<div class="close"></div>
+	</nav>
+</div>
+<nav id="bottom_nav" class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#"><img class="img-responsive" alt="logo" src="img/logo.png"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+	<ul class="navbar-nav mr-auto">
+		
+	</ul>
+	<form class="form-inline my-2 my-lg-0">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+</div>
+</nav>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/fixed-element.js" type="text/javascript"></script>
+<script src="js/jQueryRotate.js"></script>
+<script>	
+$(function(){
+	"use strict";
+		function rotate_progress_bar(){
+								   var angle = 0;
+						var rt = setInterval(function () {
+							angle += 4
+							$('.progress').rotate(angle);
+							if(angle===720){
+								clearInterval(rt);
+							}
+						}, 1);
+		};
+	          var value = 0;
+              var time = 10;
+              //进度条复位函数
+              /*function reset( ) {
+                value = 0
+                  $(".progress-bar").removeClass("progress-bar-success").css("width","0%").text("等待启动");
+                  //setTimeout(increment,5000);
+              }*/
+	              function increment( ) {
+                  value += 1;
+                  $(".progress-bar").css("width",value + "%").text(value + "%");
+                  if (value>=0 && value<=30) {
+                      //$(".progress").addClass("progress-bar-danger");
+                  }
+                  else if (value>=30 && value <=60) {
+                      //$(".progress").removeClass("progress-bar-danger");
+                      //$(".progress").addClass("progress-bar-warning");
+                  }
+                  else if (value>=60 && value <=90) {
+                      //$(".progress").removeClass("progress-bar-warning");
+                      //$(".progress").addClass("progress-bar-info");
+                  }
+                  else if(value >= 90 && value<100) {
+                      //$(".progress").removeClass("progress-bar-info");
+                      //$(".progress").addClass("progress-bar-success");    
+                  }
+                  else{
+                      //setTimeout(reset,3000);
+					
+
+					  $('.progress').delay(1000).hide(10).delay(100).show('normal',function(){
+						  setTimeout(rotate_progress_bar(),400);
+					  }).delay(1000).slideUp('normal',function(){
+						  $('.jumbotron').delay(300).slideDown("slow").delay(1000).slideUp("slow",function(){
+							  $(location).attr('href','nav.html');
+						  });
+					  });
+					  
+                      return;
+
+                  }
+
+                  var st = setTimeout(increment,time);
+              }
+
+              increment();
+});
+</script>
+</body>
+</html>
